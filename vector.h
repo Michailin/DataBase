@@ -195,7 +195,7 @@ public:
         if(index >= len)
             throw VectorException("index out of bounds");
         return data[index];
-    }\
+    }
     const Type & operator [] (unsigned int index) const throw (VectorException)
     {
         if(index >= len)
