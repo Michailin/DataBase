@@ -252,7 +252,7 @@ public:
     }
     const_iterator getEndConstIterator()
     {
-        const_iterator tmp(0,this);
+        const_iterator tmp(len,this);
         return tmp;
     }
 };
