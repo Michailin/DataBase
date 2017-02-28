@@ -28,15 +28,15 @@ public:
     class iterator
     {
     private :
+        Vector <Type> * vthis;
         unsigned int position;
     public:
-        iterator():
-            position(0)
-        {}
-        iterator(unsigned int position_):
+        iterator(unsigned int position_,Vector <Type> * vthis_):
+            vthis(vthis_),
             position(position_)
         {}
         iterator(const iterator & copy):
+            vthis(copy.vthis),
             position(copy.position)
         {}
         iterator operator ++()
@@ -76,25 +76,25 @@ public:
         }
         Type & operator *() throw(VectorException)
         {
-            if(position >= len)
+            if(position >= vthis->size())
                 throw VectorException("array index out of bounds");
-            return data[position];
+            return vthis->data[position];
         }
     };
 public:
     class const_iterator
     {
     private:
+        Vector <Type> * vthis;
         unsigned int position;
     public:
-        const_iterator():
-            position(0)
-        {}
-        const_iterator(unsigned int position_):
-            position(position_)
+        const_iterator(unsigned int position_,Vector <Type> * vthis_):
+            position(position_),
+            vthis(vthis_)
         {}
         const_iterator(const const_iterator & copy):
-            position(copy.position)
+            position(copy.position),
+            vthis(copy.vthis)
         {}
         const_iterator operator ++()
         {
@@ -133,9 +133,9 @@ public:
         }
         const Type & operator *() throw (VectorException)
         {
-            if(position >= len)
+            if(position >= vthis->size())
                 throw VectorException("index out of bounds");
-            return data[position];
+            return vthis->data[position];
         }
     };
 public:
@@ -234,6 +234,26 @@ public:
         len = index + 1;
         if(len < capacity*0.6 && capacity > 29)
             reallocMem(capacity*0.6);
+    }
+    iterator getEndIterator()
+    {
+        iterator tmp(len,this);
+        return tmp;
+    }
+    iterator getBeginIterator()
+    {
+        iterator tmp(0,this);
+        return tmp;
+    }
+    const_iterator getBeginConstIterator()
+    {
+        const_iterator tmp(0,this);
+        return tmp;
+    }
+    const_iterator getEndConstIterator()
+    {
+        const_iterator tmp(0,this);
+        return tmp;
     }
 };
 #endif // VECTOR_H

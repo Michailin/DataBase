@@ -2,27 +2,11 @@
 #include "vector.h"
 int main()
 {
+    int i = 199;
     Vector <int> tmp;
-    //tmp.reallocMem(1999);
-   // for(int i = 0; i < 100000; i++)
-    //    tmp.push_back(i);
-   // for(int i = 0; i < tmp.size();i++)
-    //    std :: cout << tmp[i] << std :: endl;
-    tmp.freeVector();
-    for(int i = 0;i < 19; i++)
-        tmp.push_back(i);
-    try
-    {
-        tmp.removeData(2);
-        tmp.removeData(2);
-        tmp.removeData(134);
-    }
-    catch(Vector <int> :: VectorException e)
-    {
-        std :: cout << e.toString() << std :: endl;
-    }
-
-    for(int i = 0; i < tmp.size(); i++)
-        std :: cout << tmp[i] << std :: endl;
+    tmp.push_back(i);
+    tmp.push_back(i + 10);
+    for(Vector<int> :: iterator i = tmp.getBeginIterator(); i < tmp.getEndIterator();i++)
+        std :: cout << *i << std :: endl;
     return 0;
 }
