@@ -1,12 +1,16 @@
 #include <iostream>
 #include "vector.h"
+#include <algorithm>
+void print(int it)
+{
+    std :: cout << it << std :: endl;\
+}
 int main()
 {
-    int i = 199;
     Vector <int> tmp;
-    tmp.push_back(i);
-    tmp.push_back(i + 10);
-    for(Vector<int> :: iterator i = tmp.getBeginIterator(); i < tmp.getEndIterator();i++)
-        std :: cout << *i << std :: endl;
+    for(int i = 0; i < 1000; i++)
+        tmp.push_back(i);
+
+    std :: for_each(tmp.getBeginIterator(),tmp.getEndIterator(),print);
     return 0;
 }
