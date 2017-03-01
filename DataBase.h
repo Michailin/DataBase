@@ -3,6 +3,7 @@
 #include "vector.h"
 #include <cstring>
 #include "structs.h"
+#include <cstdio>
 class DataBase
 {
 private:
@@ -24,9 +25,11 @@ public:
         }
     };
 public:
-    DataBase();
+    //DataBase();
     DataBase(const char * path) throw(DataBaseException);
+    DataBase(FILE * file) throw(DataBaseException);
     DataBase(const DataBase & copy);
+    //~DataBase();
 
     void push_back(const field & copy);
     void freeVector();
