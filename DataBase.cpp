@@ -2,8 +2,6 @@
 #include <cstdio>
 int stringToField(const char * str,field & result,char * buf,char * buf_data)
 {
-    //memset(buf,0,MAX_BUF_LEN);
-    //memset(buf_data,0,MAX_BUF_LEN);
     if(sscanf(str,"%i %s %lf %s",&(result.user_id),buf,&(result.price),buf_data) != 4)
         return 0;
     int len = 0;
@@ -12,7 +10,6 @@ int stringToField(const char * str,field & result,char * buf,char * buf_data)
     if(result.item != NULL)
         delete [] (result.item);
     result.item = new char [len];
-    //std :: cout << buf << std :: endl;
     memset(result.item,0,len);
     memcpy(result.item,buf,len);
     memcpy(result.data,buf_data,12);
@@ -38,7 +35,6 @@ DataBase :: DataBase (const char * path) throw(DataBase :: DataBaseException)
             throw DataBase :: DataBaseException("error while reading from file");
         if(!stringToField(buf,tmp,bufItem,bufData))
             throw DataBase :: DataBaseException("unknown string in file");
-       // std :: cout << tmp.item << "                    item" << std :: endl;
         data.push_back(tmp);
     }
     fclose(file);
@@ -74,6 +70,6 @@ DataBase :: DataBase(FILE *file) throw(DataBase ::DataBaseException)
 }
 void DataBase :: printData()
 {
-    for(int  i=0; i< data.size(); i++)
+    for(unsigned int  i=0; i< data.size(); i++)
         std :: cout <<data[i].user_id<< " " <<data[i].item << " " <<  data[i].price << " " << data[i].data << std :: endl;
 }
