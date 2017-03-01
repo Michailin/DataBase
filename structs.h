@@ -8,14 +8,21 @@ struct field
     char * item = NULL;
 	double price;
     char data[12];
+    field():
+        user_id(0),
+        item(NULL),
+        price(0)
+    {
+        memset(data,0,12);
+    }
     field(const field & copy):
         user_id(copy.user_id),
         price(copy.price)
     {
         memcpy(data,copy.data,12);
-        int len = strlen(copy.data);
-        data = new char[len];
-        memcpy(data,copy.data,len);
+        int len = strlen(copy.item);
+        item = new char[len];
+        memcpy(item,copy.item,len);
     }
     field & operator = (const field & copy)
     {

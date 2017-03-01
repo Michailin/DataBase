@@ -32,7 +32,8 @@ DataBase :: DataBase (const char * path) throw(DataBase :: DataBaseException)
         memset(buf,0,MAX_BUF_LEN);
         memset(bufData,0,MAX_BUF_LEN);
         memset(bufItem,0,MAX_BUF_LEN);
-        fgets(buf,MAX_BUF_LEN,file);
+        if(!fgets(buf,MAX_BUF_LEN,file))
+            throw DataBase :: DataBaseException("error while reading file");
         if(ferror(file))
             throw DataBase :: DataBaseException("error while reading from file");
         if(!stringToField(buf,tmp,bufItem,bufData))
@@ -58,7 +59,8 @@ DataBase :: DataBase(FILE *file) throw(DataBase ::DataBaseException)
         memset(buf,0,MAX_BUF_LEN);
         memset(bufItem,0,MAX_BUF_LEN);
         memset(bufData,0,MAX_BUF_LEN);
-        fgets(buf,MAX_BUF_LEN,file);
+        if(!fgets(buf,MAX_BUF_LEN,file))
+            throw DataBase :: DataBaseException("error while reading file");
         if(ferror(file))
             throw DataBase :: DataBaseException ("error while reading");
         if(!stringToField(buf,tmp,bufItem,bufData))
