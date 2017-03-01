@@ -4,10 +4,11 @@
 #include <cstring>
 #include "structs.h"
 #include <cstdio>
+#define MAX_BUF_LEN 1024
 class DataBase
 {
 private:
-    Vector <field> tmp;
+    Vector <field> data;
 public:
     class DataBaseException
     {
@@ -17,7 +18,7 @@ public:
             reason("default reason")
         {}
         DataBaseException(const char * reason_):
-            reason(readon_)
+            reason(reason_)
         {}
         const char * toString() const
         {
@@ -45,5 +46,8 @@ public:
     void getIntervalID(int idBegin, int idEnd, DataBase & result) const;
     void getIntervalItem(const char * itemBegin,const char * itemEnd,DataBase & result) const;
     void getIntervalPrice(double priceBegin, double priceEnd, DataBase & result) const;
+
+    void printData(); // debug function
 };
+int stringToField(const char * str, field & result,char * buf,char * buf_data);
 #endif

@@ -166,11 +166,11 @@ public:
         if(data != NULL)
             delete [] data;
     }
-    unsigned int size()
+    unsigned int size() const
     {
         return len;
     }
-    unsigned int vectorCapacity()
+    unsigned int vectorCapacity() const
     {
         return capacity;
     }
@@ -204,6 +204,7 @@ public:
         data = new Type[capacity];
         memset(data,0,capacity*sizeof(Type));
         memcpy(data,copy.data,len*sizeof(Type));
+        return *this;
     }
     const Type & operator [] (unsigned int index) const throw (VectorException)
     {
@@ -254,12 +255,12 @@ public:
         iterator tmp(0,this);
         return tmp;
     }
-    const_iterator getBeginConstIterator()
+    const_iterator getBeginConstIterator() const
     {
         const_iterator tmp(0,this);
         return tmp;
     }
-    const_iterator getEndConstIterator()
+    const_iterator getEndConstIterator() const
     {
         const_iterator tmp(len,this);
         return tmp;

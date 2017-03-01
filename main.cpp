@@ -1,17 +1,21 @@
 #include <iostream>
 #include "vector.h"
 #include <algorithm>
-void print(int it)
-{
-    std :: cout << it << std :: endl;\
-}
+#include <cstdio>
+#include "DataBase.h"
 int main()
 {
-    Vector <int> tmp;
-    for(int i = 0; i < 1000000; i++)
-        tmp.push_back(i);
-    Vector <int> tpq;
-    tpq = tmp;
-    std :: for_each(tpq.getBeginIterator(),tpq.getEndIterator(),print);
+    try
+    {
+        std :: cout << "yes" << std :: endl;
+        DataBase data("/home/dmitry/Projects/DataBase/output");
+        //std :: cout << "yes" << std :: endl;
+        data.printData();
+    }
+    catch (DataBase :: DataBaseException e)
+    {
+        std :: cout << e.toString() << std :: endl;
+    }
+
     return 0;
 }

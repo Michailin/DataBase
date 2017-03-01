@@ -90,7 +90,10 @@ int main(int argv, char ** argc)
 		price = (double)(rand() % 1000) + (double)100 / (1 + rand() % 100);
 		getRandomItem(stringBuf);
 		getRandomData(data);
-		fprintf(file, "%i %s %f %s \n", user_id, stringBuf, price, data);
+                if(i != amount - 1)
+                    fprintf(file, "%i %s %f %s \n", user_id, stringBuf, price, data);
+                else
+                    fprintf(file, "%i %s %f %s ", user_id, stringBuf, price, data);
 	}
         fclose(file);
 	delete [] stringBuf;
