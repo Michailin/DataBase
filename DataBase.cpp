@@ -2,8 +2,6 @@
 #include <cstdio>
 int stringToField(const char * str,field & result,char * buf,char * buf_data)
 {
-    //memset(buf,0,MAX_BUF_LEN);
-    //memset(buf_data,0,MAX_BUF_LEN);
     if(sscanf(str,"%i %s %lf %s",&(result.user_id),buf,&(result.price),buf_data) != 4)
         return 0;
     int len = 0;
@@ -12,7 +10,6 @@ int stringToField(const char * str,field & result,char * buf,char * buf_data)
     if(result.item != NULL)
         delete [] (result.item);
     result.item = new char [len];
-    //std :: cout << buf << std :: endl;
     memset(result.item,0,len);
     memcpy(result.item,buf,len);
     memcpy(result.data,buf_data,12);
