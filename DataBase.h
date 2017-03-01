@@ -37,12 +37,12 @@ public:
     void deleteField(const field & copy);
     void deleteField(unsigned int index);
 
-    bool isContentsData(const char data[10]) const;
+    bool isContentsData(const char data[12]) const;
     bool isContentsID(int id) const;
     bool isContentsItem(const char * item) const;
     bool isContentsPrice(double price) const;
 
-    void getIntervalData(const char dataBegin[10],const char dataEnd[10],DataBase & result) const;
+    void getIntervalData(const char dataBegin[12],const char dataEnd[12],DataBase & result) const;
     void getIntervalID(int idBegin, int idEnd, DataBase & result) const;
     void getIntervalItem(const char * itemBegin,const char * itemEnd,DataBase & result) const;
     void getIntervalPrice(double priceBegin, double priceEnd, DataBase & result) const;
