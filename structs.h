@@ -8,6 +8,15 @@ struct field
     char * item = NULL;
 	double price;
     char data[12];
+    field(const field & copy):
+        user_id(copy.user_id),
+        price(copy.price)
+    {
+        memcpy(data,copy.data,12);
+        int len = strlen(copy.data);
+        data = new char[len];
+        memcpy(data,copy.data,len);
+    }
     field & operator = (const field & copy)
     {
         user_id = copy.user_id;
