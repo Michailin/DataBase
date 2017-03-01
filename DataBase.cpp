@@ -74,6 +74,6 @@ DataBase :: DataBase(FILE *file) throw(DataBase ::DataBaseException)
 }
 void DataBase :: printData()
 {
-    for(int  i=0; i< data.size(); i++)
+    for(unsigned int  i=0; i< data.size(); i++)
         std :: cout <<data[i].user_id<< " " <<data[i].item << " " <<  data[i].price << " " << data[i].data << std :: endl;
 }

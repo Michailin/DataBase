@@ -8,7 +8,7 @@ int main()
     try
     {
         std :: cout << "yes" << std :: endl;
-        DataBase data("/home/dmitry/Projects/DataBase/output");
+        DataBase data("/home/dmitry/DataBase/output");
         //std :: cout << "yes" << std :: endl;
         data.printData();
     }

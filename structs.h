@@ -34,6 +34,7 @@ struct field
             delete [] item;
         item = new char [len];
         memcpy(item,copy.item,len);
+        return *this;
     }
 };
 #endif 
