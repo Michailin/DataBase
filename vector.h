@@ -196,6 +196,15 @@ public:
             throw VectorException("index out of bounds");
         return data[index];
     }
+    Vector & operator =(const Vector & copy)
+    {
+        len = copy.len;
+        capacity = copy.capacity;
+        delete [] data;
+        data = new Type[capacity];
+        memset(data,0,capacity*sizeof(Type));
+        memcpy(data,copy.data,len*sizeof(Type));
+    }
     const Type & operator [] (unsigned int index) const throw (VectorException)
     {
         if(index >= len)

@@ -10,7 +10,8 @@ int main()
     Vector <int> tmp;
     for(int i = 0; i < 1000000; i++)
         tmp.push_back(i);
-
-    std :: for_each(tmp.getBeginIterator(),tmp.getEndIterator(),print);
+    Vector <int> tpq;
+    tpq = tmp;
+    std :: for_each(tpq.getBeginIterator(),tpq.getEndIterator(),print);
     return 0;
 }
