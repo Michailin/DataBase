@@ -67,7 +67,7 @@ DataBase :: DataBase(FILE *file) throw(DataBase ::DataBaseException)
             throw DataBase :: DataBaseException("string is invalid");
         data.push_back(tmp);
     }
-    fclose(file);
+    //fclose(file);
     delete [] buf;
     delete [] bufItem;
     delete [] bufData;
