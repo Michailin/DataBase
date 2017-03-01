@@ -9,7 +9,6 @@ int main()
     {
         std :: cout << "yes" << std :: endl;
         DataBase data("/home/dmitry/DataBase/output");
-        //std :: cout << "yes" << std :: endl;
         data.printData();
     }
     catch (DataBase :: DataBaseException e)

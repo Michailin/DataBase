@@ -35,7 +35,6 @@ DataBase :: DataBase (const char * path) throw(DataBase :: DataBaseException)
             throw DataBase :: DataBaseException("error while reading from file");
         if(!stringToField(buf,tmp,bufItem,bufData))
             throw DataBase :: DataBaseException("unknown string in file");
-       // std :: cout << tmp.item << "                    item" << std :: endl;
         data.push_back(tmp);
     }
     fclose(file);
